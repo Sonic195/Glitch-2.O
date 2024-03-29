@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js');
 
-const client = Client({
+const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
@@ -10,7 +10,7 @@ const client = Client({
   ],
 });
 
-client.on("ready", (c) => {
+client.on('ready', (c) => {
   console.log(`✅ ${c.user.tag} is online.`);
 
   client.user.setActivity({
