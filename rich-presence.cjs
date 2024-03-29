@@ -10,12 +10,12 @@ const client = Client({
   ],
 });
 
-client.on('ready', (c) => {
+client.on("ready", (c) => {
   console.log(`✅ ${c.user.tag} is online.`);
-  
+
   client.user.setActivity({
-    name: 'On Fire'
-  })
+    name: "On Fire",
+  });
 });
 
-client.login(process.env.DISCORD_TOKEN)
+client.login(process.env.DISCORD_TOKEN);
