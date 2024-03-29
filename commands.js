@@ -40,12 +40,6 @@ const CHALLENGE_COMMAND = {
   type: 1,
 };
 
-const COINFLIP_COMMAND = {
-  name: 'coinflip',
-  description: 'flip a coin',
-  type: 1,
-};
-
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, COINFLIP_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
