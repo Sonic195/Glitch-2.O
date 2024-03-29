@@ -11,10 +11,10 @@ const client = Client({
 });
 
 client.on('ready', (c) => {
-  console.log('✅ ${c.user.tag} is online.');
+  console.log(`✅ ${c.user.tag} is online.`);
   
   client.user.setActivity({
-    name: "On Fire"
+    name: 'On Fire'
   })
 });
 
