@@ -11,5 +11,11 @@ const client = Client({
 });
 
 client.on('ready', (c) => {
-  console.log(' ')
-})
+  console.log('✅ ${c.user.tag} is online.');
+  
+  client.user.setActivity({
+    name: "On Fire"
+  })
+});
+
+client.login(process.env.DISCORD_TOKEN)
