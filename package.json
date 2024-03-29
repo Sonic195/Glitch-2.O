@@ -12,7 +12,7 @@
     "register": "node commands.js",
     "dev": "nodemon app.js"
   },
-  "author": "Shay DeWael",
+  "author": "Shadownite195",
   "license": "MIT",
   "dependencies": {
     "discord-interactions": "^3.4.0",
