@@ -11,6 +11,8 @@ import {
   VerifyDiscordRequest,
   getRandomEmoji,
   DiscordRequest,
+  coinflip,
+  waterbucketclutch,
 } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
 
@@ -131,15 +133,25 @@ app.post("/interactions", async function (req, res) {
         },
       });
     }
-    
-    // "test" command
-    if (name === "test") {
+    // coinflip command
+    if (name === "coinflip") {
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: "hello world " + getRandomEmoji(),
+          content: coinflip() + " wins",
+        },
+      });
+    }
+    // water bucket clutch command
+    if (name === "water bucket clutch") {
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: "you " ,
         },
       });
     }
