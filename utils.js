@@ -60,13 +60,3 @@ export function getRandomEmoji() {
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
-
-export function coinflip() {
-  const sides = ['heads', 'tails'];
-  return sides[Math.floor(Math.random() * sides.lenght)];
-}
-
-export function waterbucketclutch() {
-  const trial = ['failed', 'failed', 'failed', 'got a lucky drop'];
-  return trial[Math.floor(Math.random() * trial.lenght)];
-}
