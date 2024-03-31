@@ -61,4 +61,7 @@ export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function flipper
+export function flipper() {
+  const sides = ['heads', 'tails'];
+  return sides[Math.floor(Math.random() * sides.length)];
+}
