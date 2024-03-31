@@ -105,6 +105,6 @@ const WBC_COMMAND = {
   description: "try to land a water bucket clutch",
 }
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND, ];
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND, WBC_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
