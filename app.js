@@ -12,6 +12,7 @@ import {
   getRandomEmoji,
   DiscordRequest,
   flipper,
+  wbc,
 } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
 
@@ -73,35 +74,9 @@ app.post("/interactions", async function (req, res) {
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: "",
+          content: 'you got a ' + wbc(),
         },
       });
-    }
-    if (name === "flip a coin") {
-      // Send a message into the channel where co
-      const selectedOption = req.data.options?.find(
-        (option) => option.name === "biasness"
-      );
-
-      let biasContent;
-      if (selectedOption) {
-        const selectedValue = selectedOption.value;
-        return res.send({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            // Fetches a random emoji to send from a helper function
-            content: `${selectedValue} wins`,
-          },
-        });
-      } else {
-        return res.send({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            // Fetches a random emoji to send from a helper function
-            content: flipper() + "wins",
-          },
-        });
-      }
     }
     // "challenge" command 
     if (name === "challenge" && id) {
