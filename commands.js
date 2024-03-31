@@ -76,29 +76,34 @@ const GLITCH_COMMAND = {
 };
 
 const COINFLIP_COMMAND = {
-  name: 'coinflip',
-  description: 'heads or tails?',
+  name: "coinflip",
+  description: "heads or tails?",
   type: 1,
   options: [
-  {
-    name: "biasness",
-    description: "wink",
-    type: 3,
-    required: false,
-    choices: [
-      {
-        name: "heads",
-        custom_id: "heads",
-      },
-      {
-        name: "tails",
-        custom_id: "tails",
-      },
-    ]
-  }
-  ]
-}
+    {
+      name: "biasness",
+      description: "wink",
+      type: 3,
+      required: false,
+      choices: [
+        {
+          name: "heads",
+          value: "heads",
+        },
+        {
+          name: "tails",
+          value: "tails",
+        },
+      ],
+    },
+  ],
+};
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND, COINFLIP_COMMAND];
+const ALL_COMMANDS = [
+  TEST_COMMAND,
+  CHALLENGE_COMMAND,
+  GLITCH_COMMAND,
+  COINFLIP_COMMAND,
+];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
