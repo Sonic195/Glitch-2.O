@@ -67,6 +67,19 @@ app.post("/interactions", async function (req, res) {
         },
       });
     }
+    if (name === "water bucket clutch") {
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: "select difficulty",
+          components: [
+            
+          ]
+        },
+      });
+    }
     if (name === "flip a coin") {
       // Send a message into the channel where co
       const selectedOption = req.data.options?.find(
@@ -93,7 +106,7 @@ app.post("/interactions", async function (req, res) {
         });
       }
     }
-    // "challenge" command
+    // "challenge" command 
     if (name === "challenge" && id) {
       const userId = req.body.member.user.id;
       // User's object choice
