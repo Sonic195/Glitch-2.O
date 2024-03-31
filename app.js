@@ -11,7 +11,7 @@ import {
   VerifyDiscordRequest,
   getRandomEmoji,
   DiscordRequest,
-  flipper
+  flipper,
 } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
 
@@ -68,9 +68,9 @@ app.post("/interactions", async function (req, res) {
       });
     }
     if (name === "coinflip") {
-      const biasIption
+      const biasOption = interaction.options.get('biasness');
     }
-    // "challenge" command 
+    // "challenge" command
     if (name === "challenge" && id) {
       const userId = req.body.member.user.id;
       // User's object choice
