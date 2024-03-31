@@ -52,17 +52,7 @@ app.post('/interactions', async function (req, res) {
         },
       });
     }
-    // coinflip command
-    if (name === 'flip a coin') {
-      // Send a message into the channel where command was triggered from
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          // Fetches a random emoji to send from a helper function
-          content: flipper() + ' wins',
-        },
-      });
-    }
+    
     // "challenge" command
     if (name === 'challenge' && id) {
       const userId = req.body.member.user.id;
