@@ -1,14 +1,19 @@
-import 'dotenv/config';
-import express from 'express';
+import "dotenv/config";
+import express from "express";
 import {
   InteractionType,
   InteractionResponseType,
   InteractionResponseFlags,
   MessageComponentTypes,
   ButtonStyleTypes,
-} from 'discord-interactions';
-import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest, flipper } from './utils.js';
-import { getShuffledOptions, getResult } from './game.js';
+} from "discord-interactions";
+import {
+  VerifyDiscordRequest,
+  getRandomEmoji,
+  DiscordRequest,
+  flipper,
+} from "./utils.js";
+import { getShuffledOptions, getResult } from "./game.js";
 
 // Create an express app
 const app = express();
@@ -23,7 +28,7 @@ const activeGames = {};
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
  */
-app.post('/interactions', async function (req, res) {
+app.post("/interactions", async function (req, res) {
   // Interaction type and data
   const { type, id, data } = req.body;
 
@@ -42,38 +47,54 @@ app.post('/interactions', async function (req, res) {
     const { name } = data;
 
     // "test" command
-    if (name === 'test') {
+    if (name === "test") {
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: 'hello world ' + getRandomEmoji(),
+          content: "hello world " + getRandomEmoji(),
         },
       });
     }
-    if (name === 'glitcher') {
+    if (name === "glitcher") {
       // Send a message into the channel where command was triggered from
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: 'success',
+          content: "success",
         },
       });
     }
-    if (name === 'flip a coin') {
+    if (name === "flip a coin") {
       // Send a message into the channel where co
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          // Fetches a random emoji to send from a helper function
-          content: "",
-        },
-      });
+      const selectedOption = req.data.options?.find(
+        (option) => option.name === "biasness"
+      );
+
+      let biasContent;
+      if (selectedOption) {
+        const selectedValue = selectedOption.value;
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            // Fetches a random emoji to send from a helper function
+            content: `${selectedValue} wins`,
+          },
+        });
+      } else {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            // Fetches a random emoji to send from a helper function
+            content: flipper() + "wins",
+          },
+        });
+      }
     }
     // "challenge" command
-    if (name === 'challenge' && id) {
+    if (name === "challenge" && id) {
       const userId = req.body.member.user.id;
       // User's object choice
       const objectName = req.body.data.options[0].value;
@@ -97,7 +118,7 @@ app.post('/interactions', async function (req, res) {
                   type: MessageComponentTypes.BUTTON,
                   // Append the game ID to use later on
                   custom_id: `accept_button_${req.body.id}`,
-                  label: 'Accept',
+                  label: "Accept",
                   style: ButtonStyleTypes.PRIMARY,
                 },
               ],
@@ -116,16 +137,16 @@ app.post('/interactions', async function (req, res) {
     // custom_id set in payload when sending message component
     const componentId = data.custom_id;
 
-    if (componentId.startsWith('accept_button_')) {
+    if (componentId.startsWith("accept_button_")) {
       // get the associated game ID
-      const gameId = componentId.replace('accept_button_', '');
+      const gameId = componentId.replace("accept_button_", "");
       // Delete message with token in request body
       const endpoint = `webhooks/${process.env.APP_ID}/${req.body.token}/messages/${req.body.message.id}`;
       try {
         await res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
-            content: 'What is your object of choice?',
+            content: "What is your object of choice?",
             // Indicates it'll be an ephemeral message
             flags: InteractionResponseFlags.EPHEMERAL,
             components: [
@@ -144,13 +165,13 @@ app.post('/interactions', async function (req, res) {
           },
         });
         // Delete previous message
-        await DiscordRequest(endpoint, { method: 'DELETE' });
+        await DiscordRequest(endpoint, { method: "DELETE" });
       } catch (err) {
-        console.error('Error sending message:', err);
+        console.error("Error sending message:", err);
       }
-    } else if (componentId.startsWith('select_choice_')) {
+    } else if (componentId.startsWith("select_choice_")) {
       // get the associated game ID
-      const gameId = componentId.replace('select_choice_', '');
+      const gameId = componentId.replace("select_choice_", "");
 
       if (activeGames[gameId]) {
         // Get user ID and object choice for responding user
@@ -175,14 +196,14 @@ app.post('/interactions', async function (req, res) {
           });
           // Update ephemeral message
           await DiscordRequest(endpoint, {
-            method: 'PATCH',
+            method: "PATCH",
             body: {
-              content: 'Nice choice ' + getRandomEmoji(),
+              content: "Nice choice " + getRandomEmoji(),
               components: [],
             },
           });
         } catch (err) {
-          console.error('Error sending message:', err);
+          console.error("Error sending message:", err);
         }
       }
     }
@@ -190,5 +211,5 @@ app.post('/interactions', async function (req, res) {
 });
 
 app.listen(PORT, () => {
-  console.log('Listening on port', PORT);
+  console.log("Listening on port", PORT);
 });
