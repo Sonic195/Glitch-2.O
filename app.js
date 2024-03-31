@@ -68,7 +68,7 @@ app.post("/interactions", async function (req, res) {
       });
     }
     if (name === "coinflip") {
-      const biasOption = Option.get("biasness");
+      const biasOption = interaction.options.get('biasness');
       let content;
       if (biasOption) {
         content = biasOption.value + ' wins'
