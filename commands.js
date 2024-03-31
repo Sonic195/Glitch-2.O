@@ -1,5 +1,4 @@
 import "dotenv/config";
-import "requests";
 import { getRPSChoices } from "./game.js";
 import { capitalize, InstallGlobalCommands } from "./utils.js";
 
@@ -68,20 +67,20 @@ const GLITCH_COMMAND = {
           value: "overpowered graphics",
         },
         {
-          name: "",
-          value: "animal_penguin",
+          name: "python",
+          value: "easiest",
         },
       ],
     },
     {
-      name: "only_smol",
-      description: "Whether to show only baby animals",
+      name: "test2",
+      description: "only a test",
       type: 5,
       required: false,
     },
   ],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, COINFLIP_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND,];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

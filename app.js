@@ -52,7 +52,16 @@ app.post('/interactions', async function (req, res) {
         },
       });
     }
-    
+    if (name === 'glitcher') {
+      // Send a message into the channel where command was triggered from
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: 'success',
+        },
+      });
+    }
     // "challenge" command
     if (name === 'challenge' && id) {
       const userId = req.body.member.user.id;
