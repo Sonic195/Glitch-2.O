@@ -42,12 +42,6 @@ const CHALLENGE_COMMAND = {
 
 const COINFLIP_COMMAND = {
   name: "flip a coin",
-  description: "heads or tail?",
-  type: 1,
-};
-
-const COINFLIP_COMMAND = {
-  name: "flip a coin",
   type: 1,
   description: "heads or tails?",
   options: [
