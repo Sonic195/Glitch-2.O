@@ -75,18 +75,8 @@ app.post("/interactions", async function (req, res) {
           // Fetches a random emoji to send from a helper function
           content: "select difficulty",
           components: [
-            {
-              type: 1,
-              components: [
-                {
-                  type: 2,
-                  label: "Click me!",
-                  style: 1,
-                  custom_id: "click_one",
-                },
-              ],
-            },
-          ],
+            
+          ]
         },
       });
     }
@@ -116,7 +106,7 @@ app.post("/interactions", async function (req, res) {
         });
       }
     }
-    // "challenge" command
+    // "challenge" command 
     if (name === "challenge" && id) {
       const userId = req.body.member.user.id;
       // User's object choice
