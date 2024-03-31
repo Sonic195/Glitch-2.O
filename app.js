@@ -68,9 +68,27 @@ app.post("/interactions", async function (req, res) {
       });
     }
     if (name === "coinflip") {
-      const biasOption = interaction.options.get('biasness');
+      const biasOption = Option.get("biasness");
+      if (biasOption === "heads");
+      {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            // Fetches a random emoji to send from a helper function
+            content: "success",
+          },
+        });
+      }
+    } else if (biasOption === "tails");
+    {
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: "success",
+        },
+      });
     }
-    // "challenge" command
     if (name === "challenge" && id) {
       const userId = req.body.member.user.id;
       // User's object choice
