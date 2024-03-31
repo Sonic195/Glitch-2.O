@@ -69,25 +69,23 @@ app.post("/interactions", async function (req, res) {
     }
     if (name === "coinflip") {
       const biasOption = Option.get("biasness");
-      if (biasOption === "heads");
-      {
+      if (biasOption) {
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
             // Fetches a random emoji to send from a helper function
-            content: "success",
+            content: biasOption() + " wins",
+          },
+        });
+      } else {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            // Fetches a random emoji to send from a helper function
+            content: flipper() + " wins",
           },
         });
       }
-    } else if (biasOption === "tails");
-    {
-      return res.send({
-        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        data: {
-          // Fetches a random emoji to send from a helper function
-          content: "success",
-        },
-      });
     }
     if (name === "challenge" && id) {
       const userId = req.body.member.user.id;
