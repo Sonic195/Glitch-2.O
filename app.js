@@ -63,14 +63,21 @@ app.post('/interactions', async function (req, res) {
       });
     }
     if (name === 'flip a coin') {
-      // Send a message into the channel where co
+      const selectedOption = req.data.options?.find(option => option.name === 'biasness');
+      let responseContent;
+      if (selectedOption) {
+        const selectedValue = selectedOption.value;
+        return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: `${selectedValue} wins`,
+      } 
+      });
+    } else {
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
-          // Fetches a random emoji to send from a helper function
-          content: "",
-        },
-      });
+          content: `${selectedValue} wins`,
     }
     // "challenge" command
     if (name === 'challenge' && id) {
