@@ -46,6 +46,30 @@ const COINFLIP_COMMAND = {
   type: 1,
 };
 
+const COINFLIP_COMMAND = {
+  name: "flip a coin",
+  type: 1,
+  description: "heads or tails?",
+  options: [
+    {
+      name: "biasness",
+      description: "*wink*",
+      type: 3,
+      required: false,
+      choices: [
+        {
+          name: "heads",
+          value: "heads",
+        },
+        {
+          name: "tails",
+          value: "tails",
+        },
+      ],
+    },
+  ],
+};
+
 // This is an example CHAT_INPUT or Slash Command, with a type of 1
 const GLITCH_COMMAND = {
   name: "glitcher",
@@ -81,6 +105,6 @@ const GLITCH_COMMAND = {
   ],
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND,];
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
