@@ -75,12 +75,12 @@ const GLITCH_COMMAND = {
   ],
 };
 
-const WBC_COMMAND = {
-  name: "water bucket clutch",
-  description: "try to land a water bucket clutch",
+const COINFLIP_COMMAND = {
+  name: 'coinflip',
+  description: 'heads or tails?',
   type: 1,
 }
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND, WBC_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, GLITCH_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

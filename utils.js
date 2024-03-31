@@ -61,7 +61,4 @@ export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function wbc() {
-  const trial = ['fail', 'fail', 'fail', 'lucky clutch'];
-  return trial[Math.floor(Math.random() * trial.length)];
-}
+export function flipper
