@@ -9,7 +9,7 @@ client.on('ready', () => {
   // Set the rich presence for the bot
   client.user.setPresence({
     activities: [{
-      name: 'on fire', // The message shown in the rich presence
+      name: 'with fire', // The message shown in the rich presence
       type: ActivityType.Playing // The type of activity
     }],
     status: 'online' // The bot's status
