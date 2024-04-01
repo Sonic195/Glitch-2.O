@@ -66,7 +66,7 @@ export function flipper() {
   return sides[Math.floor(Math.random() * sides.length)];
 }
 
-export function wbc() {
-  const trial = ['fail', 'fail', 'fail', 'lucky clutch'];
+export function bucket() {
+  const trial = ['you failed', 'you failed', 'you failed', 'lucky clutch'];
   return trial[Math.floor(Math.random() * trial.lenght)];
 }
