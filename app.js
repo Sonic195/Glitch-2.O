@@ -12,7 +12,6 @@ import {
   getRandomEmoji,
   DiscordRequest,
   flipper,
-  bucket,
 } from "./utils.js";
 import { getShuffledOptions, getResult } from "./game.js";
 
@@ -69,32 +68,36 @@ app.post("/interactions", async function (req, res) {
       });
     }
     if (name === "wbc") {
-      // Send a message into the channel where command was triggered from
+      // lander
+      function lander() {
+        const land = ["failed", "failed", "failed", "got a lucky clutch"];
+        return land[Math.floor(Math.random() * land.length)];
+      }
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
         data: {
           // Fetches a random emoji to send from a helper function
-          content: `${bucket()}`,
+          content: `you ${lander()}`,
         },
       });
     }
     if (name === "coinflip") {
-      const biasOption = interaction.options.get('biasness');
+      const biasOption = interaction.options.get("biasness");
       let content;
       if (biasOption) {
-        content = biasOption.value + ' wins'
+        content = biasOption.value + " wins";
       } else {
-        content = flipper() + ' wins'
+        content = flipper() + " wins";
       }
-      
+
       return res.send({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            // Fetches a random emoji to send from a helper function
-            content: content,
-            ephemeral: false,
-          },
-        });
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: content,
+          ephemeral: false,
+        },
+      });
     }
     if (name === "challenge" && id) {
       const userId = req.body.member.user.id;

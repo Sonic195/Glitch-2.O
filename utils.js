@@ -65,8 +65,3 @@ export function flipper() {
   const sides = ['heads', 'tails'];
   return sides[Math.floor(Math.random() * sides.length)];
 }
-
-export function bucket() {
-  const trial = ['you failed', 'you failed', 'you failed', 'lucky clutch'];
-  return trial[Math.floor(Math.random() * trial.lenght)];
-}
