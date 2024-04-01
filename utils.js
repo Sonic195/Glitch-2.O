@@ -65,3 +65,8 @@ export function flipper() {
   const sides = ['heads', 'tails'];
   return sides[Math.floor(Math.random() * sides.length)];
 }
+
+export function wbc() {
+  const trial = ['fail', 'fail', 'fail', 'lucky clutch'];
+  return trial[Math.floor(Math.random() * trial.lenght)];
+}
