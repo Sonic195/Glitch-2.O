@@ -110,6 +110,7 @@ const ALL_COMMANDS = [
   CHALLENGE_COMMAND,
   GLITCH_COMMAND,
   COINFLIP_COMMAND,
+  WBC_COMMAND
 ];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
