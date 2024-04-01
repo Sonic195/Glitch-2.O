@@ -15,10 +15,12 @@
   "author": "Shay DeWael",
   "license": "MIT",
   "dependencies": {
+    "discord": "^0.8.2",
     "discord-interactions": "^3.2.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.0"
+    "node-fetch": "^3.3.0",
+    "rpc": "^3.3.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
